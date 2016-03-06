@@ -22,6 +22,7 @@ object Application extends Controller {
   def task = Action {
       Ok(views.html.test(Task.all(),taskForm))
   }
+
   def newTask = Action { implicit request =>
       taskForm.bindFromRequest.fold(
         errors => BadRequest(views.html.test(Task.all(),errors)),
@@ -31,5 +32,9 @@ object Application extends Controller {
         }
       )
   }
-  def deleteTask(id: Long) = TODO
+
+  def deleteTask(id: Long) = Action {
+    Task.delete(id)
+    Redirect(routes.Application.task)
+  }
 }
