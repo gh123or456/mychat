@@ -7,13 +7,14 @@ import play.api.db._
 import play.api.Play.current
 
 
-case class Task(id:Long, label:String)
+case class Task(id:Long, name:String, label:String)
 object Task
 {
   val task = {
     get[Long]("id") ~
+    get[String]("name") ~
     get[String]("label") map {
-      case id~label => Task(id,label)
+      case id~name~label => Task(id,name,label)
     }
   }
 
@@ -23,8 +24,8 @@ object Task
 
   def create(label: String) {
     DB.withConnection { implicit c =>
-      SQL("insert into task (label) values ( {label} )").on(
-        'label -> label
+      SQL("insert into task (name,label) values ( {name},{label})").on(
+        'name -> "<TEST_NAME>", 'label -> label
       ).executeUpdate()
     }
   }
