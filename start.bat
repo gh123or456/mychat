@@ -1,1 +1,1 @@
-..\..\play.bat start
+..\..\play.bat run

@@ -1,0 +1,12 @@
+@(login_form: Form[(String,String)])
+@import helper._
+
+@main("login"){
+    <h1>=<0>ω<0>= < TEST !</h1>
+
+    @form(routes.Auth.check){
+        <input type="text", name="name"></br>
+        <input type="password", name="pass"></br>
+        <input type="submit", name="login", value="login">
+    }
+}

@@ -8,29 +8,29 @@ import play.api.data.Forms._
 
 import models.Task
 
-object Application extends Controller {
+object Application extends Controller with Secured{
 
   var taskForm = Form(
       "label" -> nonEmptyText
   )
 
-  def index = Action {
+  def index =  IsAuthenticated { user => _ =>
     //Ok(views.html.index("Your new application is ready."))
     Redirect(routes.Application.task)
   }
 
-  def task = Action {
-      Ok(views.html.test(Task.all(),taskForm))
+  def task = IsAuthenticated { user => _ =>
+    Ok(views.html.test(Task.all(),taskForm))
   }
 
   def newTask = Action { implicit request =>
-      taskForm.bindFromRequest.fold(
-        errors => BadRequest(views.html.test(Task.all(),errors)),
-        label => {
-            Task.create(label)
-            Redirect(routes.Application.task)
-        }
-      )
+    taskForm.bindFromRequest.fold(
+      errors => BadRequest(views.html.test(Task.all(),errors)),
+      label => {
+        Task.create(label,request.session.get("connect").getOrElse("NONAME"))
+        Redirect(routes.Application.task)
+      }
+    )
   }
 
   def deleteTask(id: Long) = Action {
