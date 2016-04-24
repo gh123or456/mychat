@@ -1,0 +1,19 @@
+input.input_name
+{
+    width: 30%;
+    text-align: center;
+}
+
+input.input_pass
+{
+    width: 30%;
+    text-align: center;
+}
+
+.login
+{
+    width: 80%;
+    text-align: center;
+    border: 1px solid #000000;
+    margin: 0 auto;
+}

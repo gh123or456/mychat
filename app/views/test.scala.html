@@ -2,18 +2,33 @@
 @import helper._
 
 @main("main"){
-    <h1>@tasks.size chat(s)</h1>
-    <ul>
-        @tasks.map { task =>
-            <li>
-                @task.name @task.label
-                @form(routes.Application.deleteTask(task.id)) {
-                    <input type="submit" value="消す">
-                }
-            </li>
-        }
-    </ul>
-
+    <h1>=<0>ω<0>= < @tasks.size chat(s)</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>time</td>
+                    <td>label</td>
+                    <td>name</td>
+                    <td>admin</td>
+                </tr>
+            </thead>
+            <tbody>
+            @tasks.map { task =>
+                <tr>
+                    <td>@task.time</td>
+                    <td>@task.label</td>
+                    <td>@task.name</td>
+                    <td>
+                        @form(routes.Application.deleteTask(task.id)) {
+                            <input type="submit" value="消す">
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
     <h2>書け</h2>
 
     @form(routes.Application.newTask){
