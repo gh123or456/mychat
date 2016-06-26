@@ -1,6 +1,6 @@
 // @SOURCE:E:/Users/gh123or456/workspace/playframework/mychat/mychat/conf/routes
-// @HASH:4aa19c31df1bf86cff3d8bdaf3fb547759691f41
-// @DATE:Mon Apr 18 00:16:31 JST 2016
+// @HASH:7b1129d8504ca5270782095cffb1750279cba0b4
+// @DATE:Wed Jun 15 00:07:15 JST 2016
 
 
 import play.core._
@@ -41,21 +41,25 @@ private[this] lazy val controllers_Auth_login2 = Route("GET", PathPattern(List(S
         
 
 // @LINE:13
-private[this] lazy val controllers_Auth_check3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("check"))))
+private[this] lazy val controllers_Auth_check3 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("login"))))
         
 
-// @LINE:16
-private[this] lazy val controllers_Application_task4 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks"))))
+// @LINE:14
+private[this] lazy val controllers_Auth_logout4 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("logout"))))
         
 
 // @LINE:17
-private[this] lazy val controllers_Application_newTask5 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks"))))
+private[this] lazy val controllers_Application_task5 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks"))))
         
 
 // @LINE:18
-private[this] lazy val controllers_Application_deleteTask6 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks/"),DynamicPart("id", """[^/]+""",true),StaticPart("/delete"))))
+private[this] lazy val controllers_Application_newTask6 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Auth.login"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """check""","""controllers.Auth.check"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks""","""controllers.Application.task"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks""","""controllers.Application.newTask"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks/$id<[^/]+>/delete""","""controllers.Application.deleteTask(id:Long)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:19
+private[this] lazy val controllers_Application_deleteTask7 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("tasks/"),DynamicPart("id", """[^/]+""",true),StaticPart("/delete"))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Auth.login"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Auth.check"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """logout""","""controllers.Auth.logout"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks""","""controllers.Application.task"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks""","""controllers.Application.newTask"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """tasks/$id<[^/]+>/delete""","""controllers.Application.deleteTask(id:Long)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -90,29 +94,37 @@ case controllers_Auth_login2(params) => {
 // @LINE:13
 case controllers_Auth_check3(params) => {
    call { 
-        invokeHandler(controllers.Auth.check, HandlerDef(this, "controllers.Auth", "check", Nil,"GET", """""", Routes.prefix + """check"""))
+        invokeHandler(controllers.Auth.check, HandlerDef(this, "controllers.Auth", "check", Nil,"POST", """""", Routes.prefix + """login"""))
    }
 }
         
 
-// @LINE:16
-case controllers_Application_task4(params) => {
+// @LINE:14
+case controllers_Auth_logout4(params) => {
+   call { 
+        invokeHandler(controllers.Auth.logout, HandlerDef(this, "controllers.Auth", "logout", Nil,"GET", """""", Routes.prefix + """logout"""))
+   }
+}
+        
+
+// @LINE:17
+case controllers_Application_task5(params) => {
    call { 
         invokeHandler(controllers.Application.task, HandlerDef(this, "controllers.Application", "task", Nil,"GET", """ Tasks""", Routes.prefix + """tasks"""))
    }
 }
         
 
-// @LINE:17
-case controllers_Application_newTask5(params) => {
+// @LINE:18
+case controllers_Application_newTask6(params) => {
    call { 
         invokeHandler(controllers.Application.newTask, HandlerDef(this, "controllers.Application", "newTask", Nil,"POST", """""", Routes.prefix + """tasks"""))
    }
 }
         
 
-// @LINE:18
-case controllers_Application_deleteTask6(params) => {
+// @LINE:19
+case controllers_Application_deleteTask7(params) => {
    call(params.fromPath[Long]("id", None)) { (id) =>
         invokeHandler(controllers.Application.deleteTask(id), HandlerDef(this, "controllers.Application", "deleteTask", Seq(classOf[Long]),"POST", """""", Routes.prefix + """tasks/$id<[^/]+>/delete"""))
    }

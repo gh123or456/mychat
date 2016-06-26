@@ -32,10 +32,11 @@
     <h2>書け</h2>
 
     @form(routes.Application.newTask){
-        @*@inputText(TaskForm("label"))
-*@
         <input type="text" name="label">
         <input type="submit" value="言う">
+    }
+    @form(routes.Auth.logout){
+        <button type="submit" class="btn btn-primary">LOGOUT</button>
     }
 }
 

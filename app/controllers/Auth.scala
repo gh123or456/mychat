@@ -20,9 +20,13 @@ object Auth extends Controller
     Ok(views.html.login(login_form))
   }
 
+  def logout = Action{ implicit request =>
+    Redirect(routes.Auth.login).withNewSession
+  }
+
   def check = Action{ implicit request =>
     login_form.bindFromRequest.fold (
-      errors => BadRequest(views.html.login(login_form)),
+      errors =>  Redirect(routes.Auth.login).withNewSession,
       user =>
       {
         Redirect(routes.Application.task).withSession(request.session + ("connect" -> user._1))

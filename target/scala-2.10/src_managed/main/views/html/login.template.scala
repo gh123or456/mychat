@@ -35,10 +35,9 @@ Seq[Any](format.raw/*1.37*/("""
                 <input class="form-control input_pass" id="exampleInputPassword1" type="password" name="pass"  placeholder="input_Password"></br>
             </div>
             <div class="form-group">
-                """),format.raw/*17.71*/("""
-                <button type="submit" class="btn btn-primary" name="login", value="login">Submit</button>
+                <button type="submit" class="btn btn-primary">LOGIN</button>
             </div>
-        """)))})),format.raw/*20.10*/("""
+        """)))})),format.raw/*19.10*/("""
     </div>
 """)))})))}
     }
@@ -52,11 +51,11 @@ Seq[Any](format.raw/*1.37*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Mon Apr 25 01:29:48 JST 2016
+                    DATE: Wed Jun 15 00:13:41 JST 2016
                     SOURCE: E:/Users/gh123or456/workspace/playframework/mychat/mychat/app/views/login.scala.html
-                    HASH: 9f1192c558cb76fb6371f2968ee6fff05fea2c7a
-                    MATRIX: 584->1|730->36|758->56|795->59|816->72|854->73|966->150|997->173|1035->174|1513->678|1683->816
-                    LINES: 19->1|23->1|24->3|25->4|25->4|25->4|30->9|30->9|30->9|38->17|41->20
+                    HASH: 2128e721c9e876737bc4c48764930793d8907a72
+                    MATRIX: 584->1|730->36|758->56|795->59|816->72|854->73|966->150|997->173|1035->174|1608->715
+                    LINES: 19->1|23->1|24->3|25->4|25->4|25->4|30->9|30->9|30->9|40->19
                     -- GENERATED --
                 */
             

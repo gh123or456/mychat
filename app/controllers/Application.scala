@@ -6,6 +6,7 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
+
 import models.Task
 
 object Application extends Controller with Secured{
@@ -35,6 +36,10 @@ object Application extends Controller with Secured{
 
   def deleteTask(id: Long) = Action {
     Task.delete(id)
+    Redirect(routes.Application.task)
+  }
+
+  def onHandlerNotFound = Action {
     Redirect(routes.Application.task)
   }
 }

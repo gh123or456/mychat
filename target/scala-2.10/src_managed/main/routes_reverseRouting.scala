@@ -1,6 +1,6 @@
 // @SOURCE:E:/Users/gh123or456/workspace/playframework/mychat/mychat/conf/routes
-// @HASH:4aa19c31df1bf86cff3d8bdaf3fb547759691f41
-// @DATE:Mon Apr 18 00:16:31 JST 2016
+// @HASH:7b1129d8504ca5270782095cffb1750279cba0b4
+// @DATE:Wed Jun 15 00:07:15 JST 2016
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,23 +13,31 @@ import play.api.mvc._
 import Router.queryString
 
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:9
 // @LINE:6
 package controllers {
 
+// @LINE:14
 // @LINE:13
 // @LINE:12
 class ReverseAuth {
     
 
+// @LINE:14
+def logout(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "logout")
+}
+                                                
+
 // @LINE:13
 def check(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "check")
+   Call("POST", _prefix + { _defaultPrefix } + "login")
 }
                                                 
 
@@ -55,9 +63,9 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
 // @LINE:6
 class ReverseApplication {
     
@@ -68,19 +76,19 @@ def index(): Call = {
 }
                                                 
 
-// @LINE:17
+// @LINE:18
 def newTask(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "tasks")
 }
                                                 
 
-// @LINE:16
+// @LINE:17
 def task(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "tasks")
 }
                                                 
 
-// @LINE:18
+// @LINE:19
 def deleteTask(id:Long): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "tasks/" + implicitly[PathBindable[Long]].unbind("id", id) + "/delete")
 }
@@ -92,26 +100,39 @@ def deleteTask(id:Long): Call = {
                   
 
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:9
 // @LINE:6
 package controllers.javascript {
 
+// @LINE:14
 // @LINE:13
 // @LINE:12
 class ReverseAuth {
     
+
+// @LINE:14
+def logout : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Auth.logout",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "logout"})
+      }
+   """
+)
+                        
 
 // @LINE:13
 def check : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Auth.check",
    """
       function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "check"})
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
       }
    """
 )
@@ -149,9 +170,9 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
 // @LINE:6
 class ReverseApplication {
     
@@ -167,7 +188,7 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:17
+// @LINE:18
 def newTask : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.newTask",
    """
@@ -178,7 +199,7 @@ def newTask : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:16
+// @LINE:17
 def task : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.task",
    """
@@ -189,7 +210,7 @@ def task : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:18
+// @LINE:19
 def deleteTask : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.deleteTask",
    """
@@ -206,9 +227,10 @@ def deleteTask : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:9
@@ -216,14 +238,21 @@ def deleteTask : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
+// @LINE:14
 // @LINE:13
 // @LINE:12
 class ReverseAuth {
     
 
+// @LINE:14
+def logout(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Auth.logout(), HandlerDef(this, "controllers.Auth", "logout", Seq(), "GET", """""", _prefix + """logout""")
+)
+                      
+
 // @LINE:13
 def check(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Auth.check(), HandlerDef(this, "controllers.Auth", "check", Seq(), "GET", """""", _prefix + """check""")
+   controllers.Auth.check(), HandlerDef(this, "controllers.Auth", "check", Seq(), "POST", """""", _prefix + """login""")
 )
                       
 
@@ -249,9 +278,9 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:19
 // @LINE:18
 // @LINE:17
-// @LINE:16
 // @LINE:6
 class ReverseApplication {
     
@@ -262,19 +291,19 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:17
+// @LINE:18
 def newTask(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.newTask(), HandlerDef(this, "controllers.Application", "newTask", Seq(), "POST", """""", _prefix + """tasks""")
 )
                       
 
-// @LINE:16
+// @LINE:17
 def task(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.task(), HandlerDef(this, "controllers.Application", "task", Seq(), "GET", """ Tasks""", _prefix + """tasks""")
 )
                       
 
-// @LINE:18
+// @LINE:19
 def deleteTask(id:Long): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.deleteTask(id), HandlerDef(this, "controllers.Application", "deleteTask", Seq(classOf[Long]), "POST", """""", _prefix + """tasks/$id<[^/]+>/delete""")
 )

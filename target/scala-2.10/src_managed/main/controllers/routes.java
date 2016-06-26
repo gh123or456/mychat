@@ -1,6 +1,6 @@
 // @SOURCE:E:/Users/gh123or456/workspace/playframework/mychat/mychat/conf/routes
-// @HASH:4aa19c31df1bf86cff3d8bdaf3fb547759691f41
-// @DATE:Mon Apr 18 00:16:31 JST 2016
+// @HASH:7b1129d8504ca5270782095cffb1750279cba0b4
+// @DATE:Wed Jun 15 00:07:15 JST 2016
 
 package controllers;
 

@@ -9,8 +9,9 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 #auth
-GET      /login                      controllers.Auth.login
-GET     /check                      controllers.Auth.check
+GET     /login                      controllers.Auth.login
+POST    /login                      controllers.Auth.check
+GET     /logout                     controllers.Auth.logout
 
 # Tasks
 GET     /tasks                      controllers.Application.task
