@@ -2,10 +2,10 @@
 @import helper._
 
 @main("login"){
+    <script src="@routes.Assets.at("app.js")"></script>
     <div class="login">
-
         <h1>=<0>ω<0>= < TEST !</h1>
-
+        <my-app></my-app>
         @form(routes.Auth.check){
             <div class="form-group">
                 <input class="form-control input_name" id="exampleInputEmail1" type="text" name="name"  placeholder="input_name">
