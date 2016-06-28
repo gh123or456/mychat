@@ -1,7 +1,5 @@
-/target/
 target/
-/logs/
+project/
+public/
 logs/
 .idea/
-target/scala-2.10/cache/mychat/compile/play_instrumentation
-.idea/workspace.xml
