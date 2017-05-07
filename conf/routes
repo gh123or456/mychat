@@ -13,6 +13,11 @@ GET     /login                      controllers.Auth.login
 POST    /login                      controllers.Auth.check
 GET     /logout                     controllers.Auth.logout
 
+#users
+GET     /users/add                   controllers.Users.add
+GET     /users/control               controllers.Users.control
+POST    /users/create                controllers.Users.create
+
 # Tasks
 GET     /tasks                      controllers.Application.task
 POST    /tasks                      controllers.Application.newTask

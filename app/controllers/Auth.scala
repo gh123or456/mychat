@@ -1,4 +1,5 @@
 package controllers
+
 import com.sun.xml.internal.bind.v2.TODO
 import play.api._
 import play.api.mvc._
@@ -10,10 +11,10 @@ import models.{Task, User}
 object Auth extends Controller
 {
   var login_form = Form{
-      tuple(
-        "name" -> text(minLength=4),
-        "pass" -> text(minLength=6)
-      )
+    tuple(
+      "name" -> text(minLength=4),
+      "pass" -> text(minLength=6)
+    )
   }
 
   def login = Action{

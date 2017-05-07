@@ -15,7 +15,7 @@ object Task
     get[Long]("id") ~
     get[String]("name") ~
     get[String]("label") ~
-      get[Date]("update_time")map {
+      get[Date]("update_time") map {
       case id~name~label~time => Task(id,name,label,time)
     }
   }

@@ -2,9 +2,16 @@
 @import helper._
 
 @main("main"){
+    @header("main"){
+        @form(routes.Auth.logout){
+            <button type="submit" class="btn btn-primary pull-right header-content">LOGOUT</button>
+        }
+        <button type="submit" class="btn btn-primary pull-right header-content" onclick="location.href='/users/control'" >ユーザ管理</button>
+    }
+
     <h1>=<0>ω<0>= < @tasks.size chat(s)</h1>
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered main-list">
             <thead>
                 <tr>
                     <td>time</td>
@@ -35,6 +42,7 @@
         <input type="text" name="label">
         <input type="submit" value="言う">
     }
+<<<<<<< HEAD
     @form(routes.Application.upload,enctype -> "multipart/form-data"){
         <input type="file" name="upload">
         <input type="submit" value="追加">
@@ -43,3 +51,7 @@
         <button type="submit" class="btn btn-primary">LOGOUT</button>
     }
 } 
+=======
+}
+
+>>>>>>> 698c5809d21b6f13dc883bb24200a1c0d23d62ad

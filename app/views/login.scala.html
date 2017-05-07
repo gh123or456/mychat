@@ -8,14 +8,15 @@
         <my-app></my-app>
         @form(routes.Auth.check){
             <div class="form-group">
-                <input class="form-control input_name" id="exampleInputEmail1" type="text" name="name"  placeholder="input_name">
+                <input class="form-control center-block input_name" id="exampleInputEmail1" type="text" name="name"  placeholder="input_name">
             </div>
             <div class="form-group">
-                <input class="form-control input_pass" id="exampleInputPassword1" type="password" name="pass"  placeholder="input_Password"></br>
+                <input class="form-control center-block input_pass" id="exampleInputPassword1" type="password" name="pass"  placeholder="input_Password"></br>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">LOGIN</button>
             </div>
         }
+        <button type="button"  onclick="location.href='/users/add'" class="btn btn-primary">新規登録</button>
     </div>
 }

@@ -1,0 +1,11 @@
+@import helper._
+
+@main("ユーザ管理!"){
+    @header("ユーザ管理"){
+        @form(routes.Auth.logout){
+            <button type="submit" class="btn btn-primary pull-right header-content">LOGOUT</button>
+        }
+
+   }
+   <button type="button" onclick="location.href='/users/add'" class="btn btn-primary">新規登録</button>
+}
