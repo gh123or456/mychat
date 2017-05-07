@@ -1,3 +1,29 @@
+div.header
+{
+    width: 100%;
+    height :auto;
+    overflow: hidden;
+    background: #000000;
+}
+p.header-name
+{
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+    margin:0;
+}
+
+table.main-list
+{
+    #width: 98%;
+}
+
+.header-content
+{
+     margin: 5;
+}
+
+
 input.input_name
 {
     width: 30%;
