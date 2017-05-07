@@ -42,4 +42,8 @@ object Application extends Controller with Secured{
   def onHandlerNotFound = Action {
     Redirect(routes.Application.task)
   }
+
+  def upload = Action(parse.multipartFormData) {
+    Ok(views.html.test(Task.all(),taskForm))
+  }
 }

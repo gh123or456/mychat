@@ -35,8 +35,11 @@
         <input type="text" name="label">
         <input type="submit" value="言う">
     }
+    @form(routes.Application.upload,enctype -> "multipart/form-data"){
+        <input type="file" name="upload">
+        <input type="submit" value="追加">
+    }
     @form(routes.Auth.logout){
         <button type="submit" class="btn btn-primary">LOGOUT</button>
     }
-}
-
+} 

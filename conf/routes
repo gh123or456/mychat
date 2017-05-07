@@ -17,3 +17,6 @@ GET     /logout                     controllers.Auth.logout
 GET     /tasks                      controllers.Application.task
 POST    /tasks                      controllers.Application.newTask
 POST    /tasks/:id/delete           controllers.Application.deleteTask(id:Long)
+
+# upload
+GET     /upload			    controllers.Application.upload 
