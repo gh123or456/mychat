@@ -24,4 +24,4 @@ POST    /tasks                      controllers.Application.newTask
 POST    /tasks/:id/delete           controllers.Application.deleteTask(id:Long)
 
 # upload
-GET     /upload			    controllers.Application.upload 
+POST     /upload                    controllers.Application.upload

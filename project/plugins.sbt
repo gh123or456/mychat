@@ -6,3 +6,6 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.6")
+
+libraryDependencies ++= Seq(
+  "com.google.firebase" % "firebase-admin" % "4.0.3" )

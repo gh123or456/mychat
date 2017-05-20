@@ -5,11 +5,11 @@ import play.api.mvc._
 
 trait Secured
 {
-  private def user(request: RequestHeader) = request.session.get("connect")
+  private def user_check(request: RequestHeader) = request.session.get("connect")
 
   private def onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Auth.login)
 
-  def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(user, onUnauthorized) { value =>
+  def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(user_check, onUnauthorized) { value =>
     Action(request => f(value)(request))
   }
 }
